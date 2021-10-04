@@ -23,6 +23,9 @@ RUN chmod g+rwX /opt/bitnami
 COPY rootfs /
 RUN /opt/bitnami/scripts/mysql-client/postunpack.sh
 RUN /opt/bitnami/scripts/redmine/postunpack.sh
+
+COPY themes/ /opt/bitnami/redmine/public/themes/
+RUN chown 1001 -R /opt/bitnami/redmine/public/themes/
 RUN sed -i 's/:filter_html => true,/:filter_html => false,/' /opt/bitnami/redmine/lib/redmine/wiki_formatting/markdown/formatter.rb
 ENV ALLOW_EMPTY_PASSWORD="no" \
     BITNAMI_APP_NAME="redmine" \

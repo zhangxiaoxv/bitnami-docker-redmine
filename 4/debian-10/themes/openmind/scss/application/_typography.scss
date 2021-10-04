@@ -1,0 +1,46 @@
+/* Typography */
+
+/* Use the best fit font for different languages */
+
+@each $lang-code in $supported-languages {
+    :lang(#{$lang-code}) {
+
+        body {
+            font-family: get-base-font($lang-code);
+        }
+    
+        h1, h2, h3, h4, h5, h6 {
+            font-family: get-heading-font($lang-code);
+            font-weight: 500 !important;
+        }
+
+        #main-menu li a {
+            font-family: get-title-font($lang-code);
+        }
+
+        #admin-menu li a {
+            font-family: get-heading-font($lang-code), 'Font Awesome 5 Free';
+            font-weight: 500 !important;
+        }
+
+        .icon {
+            font-family: get-base-font($lang-code), 'Font Awesome 5 Free';
+        }
+
+        .issue {
+            div:not(.wiki) {
+                .contextual {
+                    ~ p > strong {
+                        font-weight: 500 !important;
+                        font-family: get-title-font($lang-code);
+                    } 
+                }
+            }
+        }
+    }
+}
+
+
+
+
+

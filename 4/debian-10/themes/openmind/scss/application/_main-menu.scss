@@ -1,0 +1,102 @@
+
+#main-menu {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	padding: 0 !important;
+	margin: 0  !important;
+	line-height: normal;
+	box-sizing: border-box;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		white-space: nowrap;
+	}
+
+	li {
+		float: none;
+		list-style-type: none;
+		margin: 0px 2px 0px 0px;
+		padding: 0px 0px 0px 0px;
+		white-space: nowrap;
+		float: left;
+		overflow: hidden;
+
+		a {
+			display: block;
+			overflow: hidden;
+            color: #fff;
+			font-weight: 400;
+			font-size: 14px !important;
+			line-height: normal !important;
+			text-decoration: none;
+			margin: 0;
+			padding: 4px 10px 4px 10px;
+			border-top-left-radius: 3px;
+			border-top-right-radius: 3px;
+
+			&:hover {
+				background: $tab-active-background-color;
+				color: #fff;
+			}
+
+			&.selected {
+				background: #fff;
+				color: #555;
+
+				&:hover {
+					background: #fff;
+					color: #555;
+				}
+			}
+
+			&.new-object {
+				background-color: $tab-active-background-color;
+			}
+		}
+
+		&:hover ul.menu-children, ul.menu-children.visible {
+			display: block;
+		}
+
+
+	}
+
+	.menu-children {
+		display: none;
+		position: absolute;
+		width: inherit;
+		z-index: 45;
+		background-color: #fff;
+		border-right: 1px solid #cccccc;
+		border-bottom: 1px solid #cccccc;
+		border-left: 1px solid #cccccc;
+
+		li {
+			float: left;
+			clear: both;
+			width: 100%;
+
+			a {
+				color: #555;
+				background-color: #fff;
+				font-weight: normal;
+				border-radius: 0;
+
+				&:hover {
+					color: #fff;
+					background-color: $tab-active-background-color;
+				}
+			}
+		}
+	}
+
+	.tabs-buttons {
+		right: 6px;
+		background-color: transparent;
+		border-bottom-color: transparent;
+    }
+    
+}
