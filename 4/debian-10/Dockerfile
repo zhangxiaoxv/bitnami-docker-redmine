@@ -4,7 +4,9 @@ LABEL maintainer "Bitnami <containers@bitnami.com>"
 ENV HOME="/" \
     OS_ARCH="amd64" \
     OS_FLAVOUR="debian-10" \
-    OS_NAME="linux"
+    OS_NAME="linux" \
+    http_proxy=http://localhost:8889 \
+    https_proxy=http://localhost:8889
 
 COPY prebuildfs /
 # Install required system packages and dependencies
@@ -21,6 +23,7 @@ RUN chmod g+rwX /opt/bitnami
 COPY rootfs /
 RUN /opt/bitnami/scripts/mysql-client/postunpack.sh
 RUN /opt/bitnami/scripts/redmine/postunpack.sh
+RUN sed -i 's/:filter_html => true,/:filter_html => false,/' /opt/bitnami/redmine/lib/redmine/wiki_formatting/markdown/formatter.rb
 ENV ALLOW_EMPTY_PASSWORD="no" \
     BITNAMI_APP_NAME="redmine" \
     BITNAMI_IMAGE_VERSION="4.2.2-debian-10-r51" \
